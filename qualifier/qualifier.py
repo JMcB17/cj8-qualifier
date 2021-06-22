@@ -1,7 +1,5 @@
 from typing import Any, List, Optional, Callable
 
-# todo: write docstrings
-
 
 BAR_VERTICAL = '│'
 BAR_HORIZONTAL = '─'
@@ -114,42 +112,3 @@ def make_table(rows: List[List[Any]], labels: Optional[List[Any]] = None, center
     # join and return table
     table = '\n'.join(table_lines)
     return table
-
-
-# debug, remove
-print(make_table([
-        ["Lemon", 18_3285, "Owner"],
-        ["Sebastiaan", 18_3285.1, "Owner"],
-        ["KutieKatj", 15_000, "Admin"],
-        ["Jake", "MoreThanU", "Helper"],
-        ["Joe", -12, "Idk Tbh"]
-    ]))
-print(make_table([
-        ["Lemon", 18_3285, "Owner"],
-        ["Sebastiaan", 18_3285.1, "Owner"],
-        ["KutieKatj", 15_000, "Admin"],
-        ["Jake", "MoreThanU", "Helper"],
-        ["Joe", -12, "Idk Tbh"]
-    ],
-    labels=["User", "Messages", "Role"]))
-table = make_table(
-    rows=[
-        ["Lemon"],
-        ["Sebastiaan"],
-        ["KutieKatj9"],
-        ["Jake"],
-        ["Not Joe"]
-    ]
-)
-print(table)
-table = make_table(
-   rows=[
-       ["Ducky Yellow", 3],
-       ["Ducky Dave", 12],
-       ["Ducky Tube", 7],
-       ["Ducky Lemon", 1]
-   ],
-   labels=["Name", "Duckiness"],
-   centered=True
-)
-print(table)
