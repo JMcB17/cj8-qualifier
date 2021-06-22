@@ -138,3 +138,14 @@ table = make_table(
     ]
 )
 print(table)
+table = make_table(
+   rows=[
+       ["Ducky Yellow", 3],
+       ["Ducky Dave", 12],
+       ["Ducky Tube", 7],
+       ["Ducky Lemon", 1]
+   ],
+   labels=["Name", "Duckiness"],
+   centered=True
+)
+print(table)
