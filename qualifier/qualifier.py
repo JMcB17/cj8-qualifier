@@ -24,7 +24,10 @@ def center_pad(item: Any, column_width: int) -> str:
     """
     if not isinstance(item, str):
         item = str(item)
+
     width = column_width + 2
+    if len(item) % 2 == 0 and column_width % 2 != 0:
+        item = item.ljust(len(item) + 1)
     return item.center(width)
 
 
@@ -36,6 +39,7 @@ def ljust_pad(item: Any, column_width: int) -> str:
     """
     if not isinstance(item, str):
         item = str(item)
+
     width = column_width + 1
     return ' ' + item.ljust(width)
 
