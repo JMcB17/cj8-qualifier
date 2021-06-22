@@ -17,6 +17,11 @@ JUNCTION_BOTTOM = '┴'
 
 
 def center_pad(item: Any, column_width: int) -> str:
+    """
+    :param item: An object that can be represented as a string via `str`.
+    :param column_width: The width of the column containing the item, as an int.
+    :return: A string padded to column_width + 2 with `str.center`.
+    """
     if not isinstance(item, str):
         item = str(item)
     width = column_width + 2
@@ -24,6 +29,11 @@ def center_pad(item: Any, column_width: int) -> str:
 
 
 def ljust_pad(item: Any, column_width: int) -> str:
+    """
+    :param item: An object that can be represented as a string via `str`.
+    :param column_width: The width of the column containing the item, as an int.
+    :return: A string with one space on the left and the item padded to column_width + 1 with `str.ljust` on the right.
+    """
     if not isinstance(item, str):
         item = str(item)
     width = column_width + 1
@@ -35,6 +45,14 @@ def make_border_horizontal(
         left_piece: str, right_piece: str, centre_piece: str,
         join_piece: str = BAR_HORIZONTAL
 ) -> str:
+    """
+    :param column_widths: List containing the width of each column. Length must be the same as row.
+    :param left_piece: The character to add to the left of the border.
+    :param right_piece: The character to add to the right of the border.
+    :param centre_piece: The character to add between columns.
+    :param join_piece: The character that will make up the body of a column.
+    :return: A formatted horizontal table border.
+    """
     line_components = [left_piece]
     column_bars = [join_piece * (w + 2) for w in column_widths]
     line_components.append(centre_piece.join(column_bars))
@@ -45,6 +63,12 @@ def make_border_horizontal(
 
 
 def make_row(row: List[Any], column_widths: List[int], padder: Callable[[Any, int], str]) -> str:
+    """
+    :param row: List containing objects that have a single-line representation (via `str`).
+    :param column_widths: List containing the width of each column. Length must be the same as row.
+    :param padder: Function to pad text, which takes an object and a width and returns a padded string.
+    :return: A formatted table row.
+    """
     columns_padded = [padder(item, cwidth) for item, cwidth in zip(row, column_widths)]
     line_components = [''] + columns_padded + ['']
     return BAR_VERTICAL.join(line_components)
